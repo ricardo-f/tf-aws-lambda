@@ -121,3 +121,6 @@ idea/
 *.out
 vendor/
 go.work
+
+# EXTRA FILES
+*.zip
