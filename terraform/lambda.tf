@@ -1,14 +1,14 @@
-resource "aws_lambda_function" "test_lambda" {
+resource "aws_lambda_function" "calculator" {
   filename         = "lambda_function.zip"
-  function_name    = "test_lambda"
-  role             = aws_iam_role.iam_for_lambda_tf.arn
+  function_name    = "calculator"
+  role             = aws_iam_role.calculator.arn
   handler          = "index.handler"
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
   runtime          = "nodejs16.x"
 }
 
-resource "aws_lambda_function_url" "test_live" {
-  function_name      = aws_lambda_function.test_lambda.function_name
+resource "aws_lambda_function_url" "calculator_live" {
+  function_name      = aws_lambda_function.calculator.function_name
   authorization_type = "NONE"
 
   cors {
