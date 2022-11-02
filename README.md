@@ -1,4 +1,4 @@
-# tf-aws-lambda
+# Expensive Calculator
 
 ## Objective:
 - Be able to use URL endpoint to call a AWS Lambda instead of a API Gateway or ALB
