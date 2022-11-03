@@ -8,46 +8,27 @@ exports.handler = async (event) => {
 };
 
 function lambdaCalc(num1, ops, num2) {
-  if (ops === "sum") {
-    const result = num1 + num2
-    let response = {
-      statusCode: 200,
-      body: `the total of the ${ops} is ${result}`,
-    }
-    return response;
-  }
+  let result
   
-  if (ops === "subtraction") {
-    const result = num1 - num2
-    let response = {
-      statusCode: 200,
-      body: `the total of the ${ops} is ${result}`,
-    }
-    return response;
+  switch (ops) {
+    case 'sum':
+      result = num1 + num2
+      break;
+    case 'subtraction':
+      result = num1 - num2
+      break;
+    case 'multiplication':
+      result = num1 * num2
+      break;
+    case 'division':
+      result = num1 / num2
+      break;
   }
 
-  if (ops === "multiplication") {
-    const result = num1 * num2
-    let response = {
-      statusCode: 200,
-      body: `the total of the ${ops} is ${result}`,
-    }
-    return response;
+  let response = {
+    statusCode: 200,
+    body: `the total of the ${ops} is ${result}`,
   }
 
-  if (ops === "division") {
-    if ( num2 === 0 ) {
-      let response = {
-        statusCode: 400,
-        body: "num2 can't be 0",
-      };
-      return response;
-    }
-    const result = num1 / num2
-    let response = {
-      statusCode: 200,
-      body: `the total of the ${ops} is ${result}`,
-    }
-    return response;
-  }
+  return response;
 }
